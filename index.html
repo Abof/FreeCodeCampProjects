@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FCC : Personal portfolio</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- JS -->
+	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){ $(".scroll").click(function(event){	event.preventDefault();	$("html,body").animate({scrollTop:$(this.hash).offset().top-57}, 350);});});
+	</script>
+</head>
+
+<body style="padding-top: 52px" data-spy="scroll" data-target="#mainNav" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
+	<div class="container-fluid"><div class="navbar-header">	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">		<span class="sr-only">Toggle navigation</span>		<span class="icon-bar"></span>		<span class="icon-bar"></span>		<span class="icon-bar"></span>	</button>	<a class="navbar-brand scroll" href="#shome"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>Abof</a></div><div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">	<ul class="nav navbar-nav navbar-right">		<li>			<a href="#section_who_am_i" class="navbar-link scroll">				<span class="glyphicon glyphicon-user" aria-hidden="true"></span> About			</a>		</li>		<li>			<a href="#section_portfolio" class="navbar-link scroll">				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Portfolio			</a>		</li>		<li>			<a href="#section_contact" class="navbar-link scroll">				<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact			</a>		</li>	</ul></div><!-- /.navbar-collapse -->
+</div>
+	<!-- /.container-fluid -->
+</nav>
+
+<!-- CONTENT HEADER -->
+<div id="content-header" class="container-fluid">
+	<div class = "row" id="shome">
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+			<h1 class="highlighted">Abof</h1>
+			<br/>
+			<h2 class="highlighted">...webdev'ing before it was cool</h2>
+		</div>
+	</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content-container" class="container-fluid">
+	<div id="section_who_am_i" class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+			<h2 class="paragraph-header">Who am I?</h2>
+			<p>I'm an avid front end developer for about <mark>
+				<script type="text/javascript">
+					var diffDays = Math.round(Math.abs((new Date(2016,07,27).getTime() - new Date().getTime())/(24*60*60*1000)));
+					document.write(diffDays);</script></mark> days now (sic!); currently completing <mark>FreeCodeCamp</mark> course with a speed of light.</p>
+				<p><mark>Disclaimer:</mark> I treat it as my hobby; professionally I'm engaged in developing rich enterprise <mark>Java</mark> applications in lovely slavic country - Poland.</p>
+				<p>I encourage you to review my, partially <mark>mocked</mark>,  portfolio.</p>
+				<p>Feel free to contact me in any way. I can help in any - even nonprofit - project (even in backend part ;).</p>
+		</div>
+	</div>
+
+	<div id="section_portfolio" class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+			<h2 class="paragraph-header">Portfolio</h2>
+			<div class="clearfix"></div>
+
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/1rkq" alt="Tribute page">
+					<figcaption>
+						<h3>Tribute page</h3>
+						<span>FreeCodeCamp project</span>
+						<a href="https://codepen.io/Abof/full/yaXxWb/" target='_blank'><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/ghEt" alt="Random Quote">
+					<figcaption>
+						<h3>Random Quote</h3>
+						<span>FreeCodeCamp project</span>
+						<a href="http://codepen.io/Abof/full/RoKJOX/" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/lqgwb" alt="WeatherApp">
+					<figcaption>
+						<h3>WeatherApp</h3>
+						<span>FreeCodeCamp project</span>
+						<a href="https://codepen.io/Abof/full/qqjXvd/" target="_blank"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/Yyhq" alt="Dog">
+					<figcaption>
+						<h3>Dog</h3>
+						<span>FreeCodeCamp project</span>
+						<a href="#"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/LZ3s" alt="WIP">
+					<figcaption>
+						<h3>Working</h3>
+						<span>...in wood</span>
+						<a href="#"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<figure class="project-thumbnail">
+					<img src="http://gdurl.com/vswL" alt="th_1">
+					<figcaption>
+						<h3>Poland</h3>
+						<span>...stronk</span>
+						<a href="#"
+              target ='_blank'><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
+
+	<div id="section_contact" class="row" >
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+			<h2 class="paragraph-header">Contact</h2>
+			<div class="clearfix"></div>
+			<p>As I said - feel free to contact me in any way - I can help in any project. Fill form below or find me on social media (check out <mark>page footer</mark>).  </p>
+		</div>
+	</div>
+
+	<div class="row">
+			<form class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12">
+						<label for="name">Your name:</label><br/>
+						<input id="name" name="name" type="text" value="" style="width:100%" /><br />
+						<label for="email">Your email:</label><br/>
+						<input id="email" name="email" type="text" value="" style="width:100%" /><br />
+						<label for="message">Your message:</label><br/>
+						<textarea id="message" name="message" rows="6" style="width:100%"></textarea><br />
+				<input id="submit_button" type="submit" value="Send email"/>
+			</form>
+	</div>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<!-- CONTENT HEADER -->
+<div id="content-footer" class="container-fluid">
+	<div class = "row">
+		<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 fa-4x">
+			<p class ="text-center">
+				<a href="https://github.com/abof" target='_blank'><i class="fa fa-github" aria-hidden="true"></i></a>
+				<a href="https://www.freecodecamp.com/abof" target='_blank'><i class="fa fa-fire" aria-hidden="true"></i></a>
+				<a href="https://codepen.io/Abof/" target='_blank'><i class="fa fa-codepen" aria-hidden="true"></i></a>
+				<a href="#" target='_blank'><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+			<p>
+			<h4 class="text-center">
+				<script type="text/javascript">document.write(new Date().getFullYear())</script>
+			</h4>
+		</div>
+	</div>
+</div>
+</body>
+</html>
