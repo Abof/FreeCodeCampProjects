@@ -1,0 +1,110 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FCC: RQMachine</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../_src/bootstrap_337_dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="my.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet">
+	<!-- JS -->
+	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+	<script type="text/javascript" src="../_src/jquery/jquery-3.1.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		/* Because of calls cache... */
+		$.ajaxSetup({ cache: false });
+
+		/* Opening covers (for the sake of modularity)*/
+		function setCoversOpenState(areOpened){
+			if(areOpened){
+				$("#quote").removeClass("cover-closed");
+			}else{
+				$("#quote").addClass("cover-closed");
+			}
+		}
+
+		/* Enable tweeting button/link (for the sake of modularity)*/
+		function setTweetingActiveness(activeness){
+			if(activeness){
+				$("#tweet-quote").addClass("active");
+			}else{
+				$("#tweet-quote").removeClass("active");
+			}
+		}
+
+		/* Update tweet button/link (for the sake of modularity)*/
+		function updateTweet(quote, author){
+			var tweetQuoteEl = $("#tweet-quote");
+			if(typeof quote != 'undefined' && typeof author != 'undefined'){
+				tweetQuoteEl.attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + quote + '" ' + author));
+			}
+		}
+
+		function updateQuote(quote, author){
+			$("#quote-text").html(JSON.stringify(quote));
+			$("#quote-author").html(JSON.stringify(author).replace(/\"/g,''));
+		}
+
+
+		$(document).ready(function() {
+			$("#quote-reload").on("click", function(){
+				setCoversOpenState(false);
+				setTweetingActiveness(false);
+			    // Used HTTPS  proxy which adds CORS headers to the ajax request! (all because codePen is SSLed )	    
+			    $.getJSON('https://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&_=1479737393121', function(json) {
+			    	var quoteText = json.quoteText;
+			    	var quoteAuthor = json.quoteAuthor;
+			    	updateQuote(quoteText, quoteAuthor);
+			    	updateTweet(quoteText, quoteAuthor);
+			    	setTweetingActiveness(true);
+			    	setCoversOpenState(true);
+			    });
+			});
+		});
+	</script>
+</head>
+
+
+<body style="padding-top: 20px">
+	<div class="container-fluid">
+		<div class = "row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+				<div id="logo">RQM</div>
+			</div>
+		</div>
+
+		<div class = "row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+				<!-- QUOTE -->
+				<!-- Tweet button -->
+				<a id="tweet-quote" target="_blank"> 
+					<i class="fa fa-twitter" aria-hidden="true"></i>
+				</a>
+				<div id="quote" class="cover-closed">
+					<!-- Quote text surrounded by covers-->
+					<div class="cover cover-upper"></div>	
+					<p id="quote-text">...</p>
+					<p id="quote-author">...</p>
+					<div class="cover cover-bottom">
+						<div id="quote-reload">
+							<i class="fa fa-refresh" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class = "row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+				<div id="footer" class="col-md-8 col-md-offset-2"><span>by </span>Abof</div>
+			</div>
+		</div>
+	</div> <!-- CONTAINER END-->
+
+</body>
+<!-- END : BODY -->
+</html> <!-- END : HTML -->

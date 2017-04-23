@@ -1,0 +1,144 @@
+body {
+	background-color: #BBAB8F;
+}
+
+.active {
+	cursor: pointer;
+}
+
+#tweet-quote{
+	right: -35px;
+	top:-50px;
+	transform: rotate(23deg);
+	outline-style: none;
+	font-size: 90px;
+	color: #1da1f2;
+	position: absolute;
+	z-index: 1;
+	text-shadow: 0 2px 7px hsla(0, 0%, 0%, 0.2); 
+	-webkit-transition: -webkit-transform .2s;
+	-moz-transition: -moz-transform .2s;
+	transition: transform .2s;
+}
+
+#tweet-quote.active:hover{
+	transform: rotate(10deg);
+}
+
+.cover {
+	position: absolute;
+	height: 60%;
+	width: 120%;
+	background-color: #D4972B;
+	color: white;
+	left: -10%;
+	-webkit-transition: -webkit-top .3s, -webkit-bottom .3s;
+	-moz-transition: -moz-top .3s, -moz-bottom .3s;
+	transition: top .3s, bottom .3s;
+	-webkit-animation-timing-function: ease-in;
+	animation-timing-function: ease-in;
+}
+
+.cover-upper {
+	top: -60%;
+	box-shadow: 0 -1px 7px hsla(0, 0%, 0%, 0.2);
+}
+
+.cover-bottom {
+	bottom: -60%;
+	box-shadow: 0 1px 7px hsla(0, 0%, 0%, 0.2);
+}
+
+.cover-closed .cover-upper {
+	top: -10%;
+}
+
+.cover-closed .cover-bottom {
+	bottom: -10%;
+}
+
+/* Przycisk przeładowania */
+#quote-reload {
+	outline-style: none;
+	position: absolute;
+	left: 50%;
+	margin-left: -60px;
+	display: block;
+	font-size: 90px;
+	height: 120px;
+	width: 120px;
+	top: -60px;
+	background-color: #564933;
+	border-radius: 60px;
+	box-shadow: 0px -2px 21px 0px rgba(0, 0, 0, .4) inset;
+	cursor: pointer;
+	padding: 15px 15px;
+	transition: unset;
+}
+
+.cover-closed #quote-reload {
+	transform: rotate(180deg);
+	-webkit-transition: -webkit-transform .3s;
+	-moz-transition: -moz-transform .3s;
+	transition: transform .3s;
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+}
+
+#quote, #logo, #footer {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#logo, #footer{
+	font-family: "Comfortaa";
+	font-size: 3em;
+	text-shadow: 0 2px 7px hsla(0, 0%, 0%, 0.2); 
+}
+
+#footer{
+	text-align: right;
+}
+#footer span {
+	font-size: 0.5em;
+}
+
+/* MAIN */
+#quote {
+	 border-radius: 30px;
+	font-family: "Coming Soon";
+	text-align: center;
+	overflow: hidden;
+	height: 370px;
+	margin: 0 auto;
+	padding: 45px 35px 55px 35px;
+	background-color: #7A583D;
+	box-shadow: 0px -2px 21px 0px rgba(0,0,0,.4) inset, 0 2px 7px hsla(0, 0%, 0%, 0.2); 
+}
+
+#quote-text{
+	font-size: 2em;
+	color: #FEA913;
+}
+
+#quote-author {
+	font-size: 1.7em;
+	text-align: right;
+	color: #D4972B;
+}
+
+@media screen and (max-width: 768px){
+	#quote {
+		height: 340px;
+	}
+	#quote-text{
+		font-size: 1.6em;
+	}
+	#quote-author {
+		font-size: 1.45em;
+	}
+	#tweet-quote{
+		right: 12px;
+	}
+}
