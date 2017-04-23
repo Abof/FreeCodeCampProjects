@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>FCC: Weather App</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
+	<link rel="stylesheet" type="text/css" href="mainStyle.css">
+	<!-- JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="mainApp.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 corners">
+        <!-- HEADER -->
+        <div id="header">Weather Briefing</div>
+        <!-- BRIEFONG NO. -->
+        <div id="coords">...</div>
+        <!-- DIVIDER -->
+        <div class="row divider">
+          <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+          </div>
+        </div>
+        <div class="row weather-info">
+          <!-- WEATHER ICON + DESCRIPTION -->
+          <div class="col-md-4 col-md-offset-2">
+            <div class="row" id="weather-icon"><i class="wi"></i></div>
+            <div id="weather-desc" class="row weather-info">(...)</div>
+          </div>
+          <!-- TEMP + DEGREES TYPES -->
+          <div class="col col-md-4">
+            <div class="row" id="temp">N/A</div>
+            <div class="row weather-info">(<span id="celsius-switch" class="degree-switch enabled">°C</span> / <span id="farenheit-switch" class="degree-switch">°F</span>)</div>
+          </div>
+        </div>
+        <!-- DIVIDER -->
+        <div class="row divider">
+          <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- WIND -->
+          <div class="weather-info col-md-4 col-md-offset-2">
+            <i class="wi wi-strong-wind"></i> <span id="wind">0 m/s</span>
+          </div>
+          <!-- HUMIDITY -->
+          <div class="weather-info col col-md-4">
+            <i class="wi wi-humidity"></i> <span id="humidity">0</span>
+          </div>
+        </div>
+        <!-- DIVIDER -->
+        <div class="row divider">
+          <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+          </div>
+        </div>
+        <!-- FOOTER -->
+        <div id="footer" class="row">Briefing issued by <a class="author" href="https://codepen.io/Abof/" target="_blank">Abof</a> on
+          <script type="text/javascript">
+            document.write(new Date().toLocaleDateString("pl-PL"))
+          </script>
+        </div>
+
+      </div>
+      <!-- MAIN COL END -->
+    </div>
+    <!-- MAIN ROW END -->
+  </div>
+  <!-- CONTAINER END -->
+</body>
