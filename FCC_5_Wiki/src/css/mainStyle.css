@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro'); /* font-family: 'Anonymous Pro', monospace; */
+
+body {
+  font-family: "Anonymous Pro";
+  background-color: #181817;
+  color: white;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.key {
+  text-align: right;
+  color: #606060;
+}
+
+#filename-value {
+  color: #91ba74;
+}
+
+.main-section-row {
+  /*border-bottom: 1px #0080ff dashed;*/
+  margin-top: 20px;
+}
+
+
+/* CODE FORMATTING COLORS (PRE) */
+pre {
+ font-family: inherit;
+ /*white-space:pre-wrap;*/
+ /*word-wrap: break-word;*/
+ padding: 0;
+ margin: 0;
+ font-size: inherit;
+ line-height: inherit;
+ color: inherit;
+ background-color: inherit;
+ border: none;
+ border-radius: 0;
+ overflow: auto;
+}
+
+.code-kw {
+  color: #34e2e2;
+}
+.code-str {
+  color: #c86c00;
+  font-weight: bold;
+}
+
+.result-key {
+  text-align: right;
+  vertical-align: top;
+  padding-left: 2%;
+  display: inline-block;
+  width: 17%;
+  /*border: 1px red solid;*/
+}
+.result-value {
+  padding-left: 2%;
+  /*border: 1px yellow dashed;*/
+  display: inline-block;
+  white-space:pre-wrap;
+  word-wrap: break-word;
+  width: 76%;
+}
+.code-comment {
+  color: #868686;
+}
+.breakable {
+  color: red;
+  /*white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;*/
+}
