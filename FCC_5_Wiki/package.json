@@ -1,0 +1,14 @@
+{
+  "name": "fcc_5_wikipedia_app",
+  "version": "1.0.0",
+  "description": "One of projects I made during FreeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abof",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
