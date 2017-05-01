@@ -9,6 +9,16 @@ body {
   padding-bottom: 20px;
 }
 
+#queryInput {
+  color: orange;
+  background: #222222;
+  border: none;
+  padding: 0 5px 0 5px;
+  margin: 0 2px 0 2px;
+  line-height: 85%;
+  width: 5px;
+}
+
 .key {
   text-align: right;
   color: #606060;
@@ -42,6 +52,7 @@ pre {
 
 .code-kw {
   color: #34e2e2;
+  /*border: 1px rgba(45, 45, 45, 0.9) solid;*/
 }
 .code-str {
   color: #c86c00;
@@ -51,18 +62,12 @@ pre {
 .result-key {
   text-align: right;
   vertical-align: top;
-  padding-left: 2%;
-  display: inline-block;
-  width: 17%;
-  /*border: 1px red solid;*/
+  box-sizing: border-box;
+  /*border: 1px rgba(45, 45, 45, 0.9) dotted;*/
 }
 .result-value {
-  padding-left: 2%;
-  /*border: 1px yellow dashed;*/
-  display: inline-block;
-  white-space:pre-wrap;
-  word-wrap: break-word;
-  width: 76%;
+  box-sizing: border-box;
+  /*border: 1px rgba(45, 45, 45, 0.9) dotted;*/
 }
 .code-comment {
   color: #868686;

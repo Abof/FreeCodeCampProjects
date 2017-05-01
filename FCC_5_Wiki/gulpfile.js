@@ -35,14 +35,23 @@ gulp.task('babel', function(){
 gulp.task('copy-html', function(){
     return gulp.src(htmlSrcGlob)
         .pipe(gulp.dest(distDir))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 gulp.task('copy-js', function(){
     return gulp.src(jsSrcGlob)
         .pipe(gulp.dest(distDir))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 gulp.task('copy-css', function(){
     return gulp.src(cssSrcGlob)
         .pipe(gulp.dest(distDir))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
 // BUILD TASK
@@ -62,10 +71,9 @@ gulp.task('browserSync', function() {
 
 // WATCHERS
 gulp.task('watch', ['browserSync', 'build'], function(){
-  gulp.watch(scssSrcGlob, ['sass']); 
-  gulp.watch(jsxSrcGlob, ['babel']); 
-  gulp.watch(jsSrcGlob, ['copy-js']); 
-  gulp.watch(cssSrcGlob, ['copy-css']); 
-  gulp.watch(htmlSrcGlob, ['copy-html']); 
+  gulp.watch(scssSrcGlob, ['sass']);
+  gulp.watch(jsxSrcGlob, ['babel']);
+  gulp.watch(jsSrcGlob, ['copy-js']);
+  gulp.watch(cssSrcGlob, ['copy-css']);
+  gulp.watch(htmlSrcGlob, ['copy-html']);
 })
-
