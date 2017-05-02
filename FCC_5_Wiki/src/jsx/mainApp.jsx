@@ -1,7 +1,11 @@
-// MAIN APAP FLOW
-$(document).ready(function() {
+/* CODEPEN SETUP */
+$.ajaxSetup({
+  cache: false
+});
 
-  showHelpText();
+/* MAIN APP FLOW / CONTROL*/
+$(document).ready(function() {
+  showHelpText(); // show help at start
 
   $("#queryInput").keypress(function(event) {
     var queryInputValue = $("#queryInput").text();
@@ -10,22 +14,18 @@ $(document).ready(function() {
       event.preventDefault();
     }
 
-    if(event.which == 13){
-        event.preventDefault();
+    if(event.which == 13){ // for 'return' key -> search wiki and propagate data
+      event.preventDefault();
       getRawWikiApiSearchResponse(queryInputValue).then(propagateSearchresponse).catch(log);
     }
   });
-});
-
-//HELPERS
-$.ajaxSetup({
-  cache: false
 });
 
 var pageUrl = 'https://en.wikipedia.org/?curid=';
 var apiSearchUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=&list=search&titles=&srprop=snippet&srsearch=';
 var jsonpCallback = '&callback=JSON_CALLBACK';
 
+// Getting raw JSON reponse from Wikipedia
 function getRawWikiApiSearchResponse(searchPhrase) {
   return new Promise(function(resolve, reject) {
     $.ajax({
@@ -37,30 +37,26 @@ function getRawWikiApiSearchResponse(searchPhrase) {
   });
 };
 
+/*
+  Transforming raw JSON result from Wikipedia to acceptable by react component array of data objects.
+  Render react components.
+*/
 function propagateSearchresponse(rawJson) {
   var resultsArray = [];
 
   rawJson.query.search.map(function(singleResult) {
-    log(singleResult);
-
-    var clearedSnipped = singleResult.snippet.replace(new RegExp("<span class=\"searchmatch\">", 'g'), "");
-    clearedSnipped = clearedSnipped.replace(new RegExp("</span>", 'g'), "");
-    clearedSnipped = clearedSnipped.replace(new RegExp("&[a-zA-Z0-9]*;", 'g'), "");
-    log(clearedSnipped);
-    var snippet = clearedSnipped.indexOf('.') > 10? clearedSnipped.substring(0, clearedSnipped.indexOf('.') + 1)+ " (...)" : clearedSnipped+" (...)";
     var result = {
       "title" : singleResult.title,
-      "snippet" : snippet,
-      "url" : "https://costam"
+      "snippet" : prepareSnippet(singleResult.snippet),
+      "url" : prepareWikiUrl(singleResult.title)
     };
-    log(result);
     resultsArray.push(result);
   });
 
   if(resultsArray.length > 0){
     ReactDOM.render(
       <div>
-          <ResultsArray value = {resultsArray} />
+          <CodeArrayOfObjects value = {resultsArray} />
       </div>,
       document.getElementById('results')
     );
@@ -69,17 +65,29 @@ function propagateSearchresponse(rawJson) {
   }
 }
 
-var helpText = "Enter what you are searching for as an argument in 'search_wiki' function (above; orange); hit 'return'. PS: If you see this message your query might return no results :(";
+// Preparing snippet for display
+function prepareSnippet(rawSnippet){
+  var clearedSnippet = rawSnippet
+    .replace(new RegExp("<span class=\"searchmatch\">", 'g'), "")
+    .replace(new RegExp("</span>", 'g'), "")
+    .replace(new RegExp("&[a-zA-Z0-9]*;", 'g'), "");
+  return clearedSnippet.indexOf('.') > 10? clearedSnippet.substring(0, clearedSnippet.indexOf('.') + 1)+ " (...)" : clearedSnippet +" (...)";
+}
+
+// Preparing wiki URL
+function prepareWikiUrl(title){
+  return "https://en.wikipedia.org/wiki/" + title.trim().replace(new RegExp(" ", "g"), "%20")
+}
+
+// Displaying help text
+var helpText = "Enter what you are searching for as an argument in 'search_wiki' function (above; orange); Press 'return'. PS: If you see this message your query could return no results :(";
 function showHelpText() {
   ReactDOM.render(
     <div>
-        <HelpText value = {helpText} />
+      <FullRowCodeKeyword value = "/*" />
+        <span className="row code-comment">{helpText}</span>
+      <FullRowCodeKeyword value = "*/" />
     </div>,
     document.getElementById('results')
   );
-}
-
-
-function log(msg) {
-  console.log(msg);
 }

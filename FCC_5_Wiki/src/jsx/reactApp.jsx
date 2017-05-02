@@ -1,52 +1,7 @@
-class ObjKey extends React.Component {
-  render() {
-    return (
-      <span className="col col-lg-2 col-md-2 col-sm-3 code-str result-key">
-        "{this.props.value}":
-      </span>
-    );
-  }
-}
-
-class ObjValue extends React.Component {
-  render() {
-    return (
-      <span className="col col-lg-10 col-md-10 col-sm-9 result-value">
-        "{this.props.value}"
-      </span>
-    );
-  }
-}
-
-class ObjFullRowSyntaxMisc extends React.Component {
-  render() {
-    return (
-      <div className="row">
-        <div className="col col-lg-12 code-kw">{this.props.value}</div>
-      </div>
-    );
-  }
-}
-
-class SingleResultObj extends React.Component {
-  render() {
-    var resultEntries = this.props.value;
-    var openingBracket = <ObjFullRowSyntaxMisc value = {this.props.brackets[0]} />;
-    var closingBracket = <ObjFullRowSyntaxMisc value = {this.props.brackets[1]} />;
-
-    var returningObj = [openingBracket];
-    var i = 0;
-    for (var key in resultEntries) {
-       if (resultEntries.hasOwnProperty(key)) {
-         returningObj.push(<div className="row" ><ObjKey value = {key} /><ObjValue value = {resultEntries[key]} /> </div>);
-       }
-    }
-    returningObj.push(closingBracket);
-    return (<div>{returningObj}</div>);
-  }
-}
-
-class ResultsArray extends React.Component {
+/*
+   JS-CODE_LIKE representation of array of objects.
+*/
+class CodeArrayOfObjects extends React.Component {
   determineBrackets(resultIndex, resultsLength) {
     var openingBrackets = (resultIndex == 0) ? '[{' : '{';
     var closingBrackets = (resultIndex == resultsLength - 1) ? '}]' : '},';
@@ -59,28 +14,64 @@ class ResultsArray extends React.Component {
     var result = [];
     for (var i = 0; i < resultsArray.length; i++) {
       var brackets = this.determineBrackets(i, resultsArray.length);
-      result.push(<SingleResultObj key={i} value={resultsArray[i]} brackets={brackets} />);
+      result.push(<CodeObject key={i} value={resultsArray[i]} brackets={brackets} />);
     }
     return <div>{result}</div>;
   }
 }
 
-class HelpText extends React.Component {
+/*
+   JS-CODE_LIKE representation of object; opening bracket, key-value pairs and closing bracket.
+*/
+class CodeObject extends React.Component {
+  render() {
+    var objectToDisplay = this.props.value;
+    var openingBracket = <FullRowCodeKeyword value = {this.props.brackets[0]} />;
+    var closingBracket = <FullRowCodeKeyword value = {this.props.brackets[1]} />;
+
+    var returningObj = [openingBracket];
+    for (var key in objectToDisplay) {
+       if (objectToDisplay.hasOwnProperty(key)) {
+         returningObj.push(<div className="row" ><CodeObjectKey value = {key} /><CodeObjectValue value = {objectToDisplay[key]} /> </div>);
+       }
+    }
+    returningObj.push(closingBracket);
+    return (<div>{returningObj}</div>);
+  }
+}
+
+class CodeObjectKey extends React.Component {
   render() {
     return (
-      <div>
-      <ObjFullRowSyntaxMisc value = "/*" />
-      <span className="row code-comment">{this.props.value}</span>
-      <ObjFullRowSyntaxMisc value = "*/" />
+      <span className="col col-lg-2 col-md-2 col-sm-3 col-xs-12 code-string code-object-key">
+        "{this.props.value}":
+      </span>
+    );
+  }
+}
+
+class CodeObjectValue extends React.Component {
+  render() {
+    var urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i;
+
+    var innerHtml = urlRegex.test(this.props.value) ?
+      <a className  = "dont-break-out" href={this.props.value}>"{this.props.value}"</a> : this.props.value;
+
+    return (
+      <span className="col col-lg-10 col-md-10 col-sm-9 col-xs-12 result-value">
+        {innerHtml}
+      </span>
+    );
+
+  }
+}
+
+class FullRowCodeKeyword extends React.Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="col col-lg-12 code-keyword">{this.props.value}</div>
       </div>
     );
   }
 }
-//=====================
-//
-// ReactDOM.render(
-//   <div>
-//       <ResultsArray value = {results} />
-//   </div>,
-//   document.getElementById('results')
-// );
