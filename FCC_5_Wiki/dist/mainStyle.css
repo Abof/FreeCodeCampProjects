@@ -1,0 +1,82 @@
+/* Monospaced font familly for whole site */
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+
+body {
+  background-color: #181817;
+  font-family: "Anonymous Pro";
+  color: white;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.main-section-row {
+  margin-top: 20px;
+}
+
+.row-category-name {
+  text-align: right;
+  color: #606060;
+}
+
+#queryInput {
+  color: orange;
+  background: #222222;
+  border: none;
+  padding: 0 5px 0 5px;
+  margin: 0 2px 0 2px;
+  line-height: 85%;
+}
+
+/* STYLES FOR JS-CODE-LIKE FORMATTING */
+#filename-value {
+  color: #91ba74; /* light green for filename */
+}
+
+.code-keyword {
+  color: #34e2e2; /* blueish keyword color */
+}
+
+.code-string {
+  color: #c86c00; /* orange for strings */
+}
+
+.code-object-key {
+  text-align: right;
+  vertical-align: top;
+}
+
+.code-comment {
+  color: #868686; /* gray for comments */
+}
+
+/* GENERAL PURPOSES STYLES */
+.dont-break-out {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 768px){
+  .row-category-name, .result-key {
+    text-align: left;
+  }
+  .row-category-body, .result-value {
+    padding-left: 40px;
+  }
+}
