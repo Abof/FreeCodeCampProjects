@@ -134,11 +134,11 @@ var CodeObjectValue = function (_React$Component4) {
 
       var innerHtml = urlRegex.test(this.props.value) ? React.createElement(
         'a',
-        { className: 'dont-break-out', href: this.props.value },
+        { className: 'dont-break-out', href: this.props.value, target: '_blank' },
         '"',
         this.props.value,
         '"'
-      ) : this.props.value;
+      ) : '"' + this.props.value + '"';
 
       return React.createElement(
         'span',

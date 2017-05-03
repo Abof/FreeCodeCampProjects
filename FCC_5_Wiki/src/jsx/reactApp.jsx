@@ -55,7 +55,7 @@ class CodeObjectValue extends React.Component {
     var urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i;
 
     var innerHtml = urlRegex.test(this.props.value) ?
-      <a className  = "dont-break-out" href={this.props.value}>"{this.props.value}"</a> : this.props.value;
+      <a className  = "dont-break-out" href={this.props.value} target = "_blank">"{this.props.value}"</a> : '"' + this.props.value + '"';
 
     return (
       <span className="col col-lg-10 col-md-10 col-sm-9 col-xs-12 result-value">

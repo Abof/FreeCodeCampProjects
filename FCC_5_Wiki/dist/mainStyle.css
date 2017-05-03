@@ -73,7 +73,7 @@ body {
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 768px){
-  .row-category-name, .result-key {
+  .row-category-name, .code-object-key{
     text-align: left;
   }
   .row-category-body, .result-value {
