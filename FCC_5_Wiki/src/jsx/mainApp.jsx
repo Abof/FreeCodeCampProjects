@@ -9,17 +9,32 @@ $(document).ready(function() {
 
   $("#queryInput").keypress(function(event) {
     var queryInputValue = $("#queryInput").text();
-
+    console.log(event.which);
     if(queryInputValue.length > 20){
       event.preventDefault();
     }
 
     if(event.which == 13){ // for 'return' key -> search wiki and propagate data
       event.preventDefault();
-      getRawWikiApiSearchResponse(queryInputValue).then(propagateSearchresponse).catch(log);
+      $("#queryInput").blur();
+
+      if(queryInputValue.length > 0){
+        getRawWikiApiSearchResponse(queryInputValue).then(propagateSearchresponse).catch(console.log);
+      }else{
+        openRandomWikiPage();
+      }
     }
   });
 });
+
+function openRandomWikiPage(){
+  var win = window.open('https://en.wikipedia.org/wiki/Special:Random', '_blank');
+  if (win) {
+      win.focus();
+  } else {
+      alert('Please allow popups for this website!');
+  }
+}
 
 var pageUrl = 'https://en.wikipedia.org/?curid=';
 var apiSearchUrl = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=&list=search&titles=&srprop=snippet&srsearch=';
@@ -79,13 +94,20 @@ function prepareWikiUrl(title){
   return "https://en.wikipedia.org/wiki/" + title.trim().replace(new RegExp(" ", "g"), "%20")
 }
 
-// Displaying help text
-var helpText = "Enter what you are searching for as an argument in 'search_wiki' function (above; orange); Press 'return'. PS: If you see this message your query could return no results :(";
+// Displaying help
 function showHelpText() {
   ReactDOM.render(
     <div>
       <FullRowCodeKeyword value = "/*" />
-        <span className="row code-comment">{helpText}</span>
+        <span className="row code-comment">
+          <span className="code-string strong">+</span>  Enter what you are searching for as an <span className="strong">argument in 'search_wiki' function</span> (above; orange); <span className="strong">Press 'return'.</span>
+        </span>
+        <span className="row code-comment">
+          <span className="code-string strong">+</span> For <span className="strong">random</span> article from Wikipedia provide <span className="strong">empty string as an argument</span>.
+        </span>
+        <span className="row code-comment">
+          <span className="code-string strong">+</span>  PS: If you see this message your query could return no results :(
+        </span>
       <FullRowCodeKeyword value = "*/" />
     </div>,
     document.getElementById('results')
